@@ -94,23 +94,25 @@ public class ReportServiceImpl implements ReportService {
 
 	private boolean isSearchEmpty(SearchRequest request) {
 
+		boolean isEmpty = true;
+
 		if (request.getPlanName() != null && !request.getPlanName().equals("")) {
-			return false;
+			isEmpty = false;
 		}
 
 		if (request.getPlanStatus() != null && !request.getPlanStatus().equals("")) {
-			return false;
+			isEmpty = false;
 		}
 
 		if (request.getStartDate() != null && !request.getStartDate().equals("")) {
-			return false;
+			isEmpty = false;
 		}
 
 		if (request.getEndDate() != null && !request.getEndDate().equals("")) {
-			return false;
+			isEmpty = false;
 		}
 
-		return true;
+		return isEmpty;
 	}
 
 }

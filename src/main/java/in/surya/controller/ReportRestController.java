@@ -49,8 +49,8 @@ public class ReportRestController {
 		String headerKey = "Content-Disposition";
 		String headerValue = "attachment; filename=Plans.xls";
 		response.setHeader(headerKey, headerValue);
-
-		List<SearchResponse> records = service.searchPlans(null);
+		SearchRequest request=new SearchRequest();
+		List<SearchResponse> records = service.searchPlans(request);
 
 		ExcelGenerator generator = new ExcelGenerator();
 		generator.generateExcel(records, response);
@@ -60,14 +60,12 @@ public class ReportRestController {
 	@GetMapping("/pdf")
 	public void generatePdf(HttpServletResponse httpResponse) throws DocumentException, IOException {
 		
-		
-		
 		httpResponse.setContentType("application/pdf");
 		String headerKey = "Content-Disposition";
 		String headerValue = "attachment; filename=Plans.pdf";
 		httpResponse.setHeader(headerKey, headerValue);
-		
-		List<SearchResponse> records = service.searchPlans(null);
+		SearchRequest request=new SearchRequest();
+		List<SearchResponse> records = service.searchPlans(request);
 		
 
 		PDFGenerator generator = new PDFGenerator();
