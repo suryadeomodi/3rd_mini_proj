@@ -41,7 +41,7 @@ public class ReportServiceImpl implements ReportService {
 		 * if (isSearchEmpty(request)) { eligRecords = repository.findAll(); }
 		 */
 
-		if (request == null) {
+		if (isSearchEmpty(request)) {
 			eligRecords = repository.findAll();
 			for (EligibilityDetailsEntity entity : eligRecords) {
 				SearchResponse response = new SearchResponse();
